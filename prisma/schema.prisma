@@ -24,6 +24,7 @@ model User {
   coverLetter     CoverLetter[]
   resume          Resume?
   industryInsight IndustryInsight? @relation(fields: [industry], references: [industry])
+  roadmaps        Roadmap[]        // One-to-many relation with roadmaps
 }
 
 model Assessment {
@@ -81,4 +82,18 @@ model IndustryInsight {
   users             User[]
 
   @@index([industry])
+}
+
+// New Roadmap Model
+model Roadmap {
+  id        String   @id @default(cuid()) // Unique ID for each roadmap
+  topic     String   // Topic of the roadmap (e.g., "Data Science")
+  steps     Json     // Store roadmap steps as JSON (containing name, description, and resources)
+  userId    String   // Reference to the user who created the roadmap
+  createdAt DateTime @default(now()) // Timestamp for when the roadmap was created
+  updatedAt DateTime @updatedAt // Timestamp for when the roadmap was last updated
+
+  user      User     @relation(fields: [userId], references: [id]) // Relation to User model
+
+  @@index([userId]) // Index on userId for fast lookup
 }
