@@ -33,7 +33,7 @@ function RoadmapComponent({ roadmapData }) {
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline"
                 >
-                  {String(resource).length > 30 ? `${String(resource).slice(0, 30)}...` : resource}
+                  {String(resource).length > 30 ? ${String(resource).slice(0, 30)}... : resource}
                 </a>
               </li>
             ))}

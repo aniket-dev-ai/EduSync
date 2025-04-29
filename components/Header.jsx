@@ -31,7 +31,7 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu";
 
-import { checkUser } from '@/lib/checkUser';
+import { checkUser } from '../lib/checkUser';
 
 const Header = async () => {
   await checkUser();
